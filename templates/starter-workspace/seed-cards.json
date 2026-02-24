@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "description": "Example cards showing the card format. Replace with your own projects.",
+  "cards": [
+    {
+      "card_id": "EXAMPLE-001",
+      "title": "Example: Research a topic",
+      "description": "Use this as a template for research tasks. Assign to your Researcher bender.",
+      "lane": "backlog",
+      "priority": "normal",
+      "tags": ["example", "research"]
+    },
+    {
+      "card_id": "EXAMPLE-002",
+      "title": "Example: Write a document",
+      "description": "Use this as a template for writing tasks. Assign to your Writer bender.",
+      "lane": "backlog",
+      "priority": "normal",
+      "tags": ["example", "writing"]
+    }
+  ]
+}

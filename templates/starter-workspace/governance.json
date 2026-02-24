@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "quality_gates": {
+    "enabled": true,
+    "self_review_required": true,
+    "structured_output_required": true,
+    "min_confidence_threshold": 0.7
+  },
+  "autonomy": {
+    "default_level": "standard",
+    "levels": {
+      "low": "Bender proposes, human approves before execution",
+      "standard": "Bender executes, human reviews output",
+      "high": "Bender executes and integrates, human spot-checks"
+    }
+  },
+  "delegation": {
+    "default_delegation_target": "bender",
+    "escalation_triggers": ["ambiguous_intent", "irreversible_action", "security_sensitive"]
+  },
+  "guardrails": {
+    "secrets_never_in_output": true,
+    "no_destructive_operations_without_confirmation": true,
+    "max_bender_chain_depth": 3
+  }
+}
