@@ -1,0 +1,11 @@
+[Unit]
+Description=dea Control Center Health Check
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/dea/platform/vm/cc-healthcheck.sh
+User=dea
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dea-cc-healthcheck
