@@ -24,6 +24,8 @@ MIGRATIONS_DIR="$REPO_ROOT/supabase/migrations"
 DB_URL=""
 SKIP_ONBOARD=false
 OUTPUT_DIR="./generated-workspace"
+WORKSPACE_NAME="My Workspace"
+USER_NAME="User"
 
 # ---------------------------------------------------------------------------
 # Argument parsing
@@ -31,12 +33,14 @@ OUTPUT_DIR="./generated-workspace"
 
 while [[ $# -gt 0 ]]; do
   case $1 in
-    --db-url)       DB_URL="$2"; shift 2 ;;
-    --skip-onboard) SKIP_ONBOARD=true; shift ;;
-    --output-dir)   OUTPUT_DIR="$2"; shift 2 ;;
+    --db-url)         DB_URL="$2"; shift 2 ;;
+    --skip-onboard)   SKIP_ONBOARD=true; shift ;;
+    --output-dir)     OUTPUT_DIR="$2"; shift 2 ;;
+    --workspace-name) WORKSPACE_NAME="$2"; shift 2 ;;
+    --user-name)      USER_NAME="$2"; shift 2 ;;
     *)
       echo "Unknown argument: $1"
-      echo "Usage: $0 --db-url <postgres-connection-string> [--skip-onboard] [--output-dir <path>]"
+      echo "Usage: $0 --db-url <postgres-connection-string> [--workspace-name <name>] [--user-name <name>] [--skip-onboard] [--output-dir <path>]"
       exit 1
       ;;
   esac
@@ -116,26 +120,32 @@ echo "Migrations: $APPLIED applied, $FAILED failed."
 echo ""
 
 # ---------------------------------------------------------------------------
-# Seed starter workspace archetypes into user_config
+# Seed starter workspace (benders, project, seed cards)
 # ---------------------------------------------------------------------------
 
-BENDERS_FILE="$REPO_ROOT/templates/starter-workspace/benders.json"
-GOVERNANCE_FILE="$REPO_ROOT/templates/starter-workspace/governance.json"
+IMPORT_SQL="$REPO_ROOT/templates/starter-workspace/import-workspace.sql"
 
-if [[ -f "$BENDERS_FILE" ]]; then
-  echo "Seeding starter workspace configuration..."
+if [[ -f "$IMPORT_SQL" ]]; then
+  echo "Seeding starter workspace (benders, project, seed cards)..."
 
-  # Insert governance defaults as user_config sentinel (system-level key, no user_id)
-  # These are read as product defaults when user_config row doesn't exist for a key
-  psql "$DB_URL" <<'SQL'
-    -- Starter workspace schema version marker
-    -- This is a no-op sentinel; actual user config is seeded post-onboarding
-    DO $$ BEGIN
-      RAISE NOTICE 'Starter workspace marker: schema provisioned at %', now();
-    END $$;
-SQL
+  # Substitute {{variables}} into a temp copy of the SQL
+  IMPORT_TMP=$(mktemp /tmp/import-workspace-XXXXXX.sql)
+  sed \
+    -e "s/{{workspace.name}}/$WORKSPACE_NAME/g" \
+    -e "s/{{user.name}}/$USER_NAME/g" \
+    "$IMPORT_SQL" > "$IMPORT_TMP"
 
-  echo "Starter workspace configuration noted (seeded post-onboarding per user)."
+  if psql "$DB_URL" -f "$IMPORT_TMP" &>/dev/null; then
+    echo "Starter workspace seeded OK."
+  else
+    echo "Warning: starter workspace seed had errors — re-running with verbose output:"
+    psql "$DB_URL" -f "$IMPORT_TMP" || true
+  fi
+
+  rm -f "$IMPORT_TMP"
+  echo ""
+else
+  echo "Warning: import-workspace.sql not found — skipping starter workspace seed."
   echo ""
 fi
 
