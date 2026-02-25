@@ -1,0 +1,446 @@
+{
+  "version": "1.0",
+  "description": "Framework library — structured thinking tools for humans and AI working together.",
+  "categories": [
+    {
+      "id": "planning",
+      "name": "Planning Frameworks",
+      "frameworks": [
+        {
+          "id": "ogsm",
+          "name": "OGSM",
+          "full_name": "Objectives, Goals, Strategies, Measures",
+          "when_to_use": "Translating a high-level objective into a concrete, measurable plan. Project kickoffs. Quarterly planning. Aligning a team around a shared direction.",
+          "structure": [
+            "Objective: One qualitative statement of what we want to achieve",
+            "Goals: 2-4 quantitative targets that define success",
+            "Strategies: The approaches we will take to reach those goals",
+            "Measures: Specific KPIs and milestones that track progress"
+          ]
+        },
+        {
+          "id": "pre-mortem",
+          "name": "Pre-Mortem Analysis",
+          "when_to_use": "Before starting any significant project or initiative. Especially valuable for high-stakes work.",
+          "structure": [
+            "Assume the project has already failed. It's six months from now and it didn't work.",
+            "Each participant independently lists the most likely reasons for failure.",
+            "Group and prioritize the failure modes.",
+            "For each high-priority failure mode, define a mitigation strategy.",
+            "Integrate mitigations into the project plan."
+          ]
+        },
+        {
+          "id": "working-backwards",
+          "name": "Working Backwards",
+          "full_name": "Working Backwards (Amazon-style)",
+          "when_to_use": "New product features, new tools, new capabilities. Anything where the end-user experience matters.",
+          "structure": [
+            "Write the press release / announcement first — what will we say when this is done?",
+            "Define the customer (user) and their problem.",
+            "Describe the solution and how it feels to use.",
+            "Write the FAQ — what questions will people ask?",
+            "Work backwards from this vision to define the build plan."
+          ]
+        },
+        {
+          "id": "rice",
+          "name": "RICE Prioritization",
+          "full_name": "Reach, Impact, Confidence, Effort",
+          "when_to_use": "Prioritizing a backlog of tasks, features, or initiatives when resources are constrained.",
+          "structure": [
+            "Reach: How many users/stakeholders will this affect?",
+            "Impact: How much will it move the needle? (Scored 0.25 to 3)",
+            "Confidence: How sure are we about these estimates? (Percentage)",
+            "Effort: How much work is required? (Person-weeks or agent-hours)",
+            "Score: (Reach × Impact × Confidence) / Effort"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "development",
+      "name": "Development Frameworks",
+      "frameworks": [
+        {
+          "id": "tdd",
+          "name": "Test-Driven Development",
+          "full_name": "TDD",
+          "when_to_use": "Building any code, tool, automation, or system component.",
+          "structure": [
+            "Write the test first — define what 'working' means before writing any code.",
+            "Run the test (it should fail — the feature doesn't exist yet).",
+            "Write the minimum code to pass the test.",
+            "Refactor for clarity and quality.",
+            "Repeat."
+          ]
+        },
+        {
+          "id": "separation-of-concerns",
+          "name": "Separation of Concerns",
+          "when_to_use": "Architectural decisions. Designing any system with multiple components.",
+          "structure": [
+            "Each component should do one thing well.",
+            "Components communicate through defined interfaces, not shared state.",
+            "Changes to one component should not require changes to others.",
+            "Data flows through the system in predictable, traceable paths."
+          ]
+        },
+        {
+          "id": "integration-first",
+          "name": "Integration-First Development",
+          "when_to_use": "Before building anything new. Always.",
+          "structure": [
+            "Before writing custom code, check: does an existing tool, library, or service already solve this?",
+            "If yes, integrate it. Don't rebuild.",
+            "If partially, extend the existing solution rather than starting from scratch.",
+            "If no, build — but on top of established foundations.",
+            "Document the decision and rationale on the task card."
+          ]
+        },
+        {
+          "id": "progressive-enhancement",
+          "name": "Progressive Enhancement",
+          "when_to_use": "Building user-facing tools, interfaces, or capabilities.",
+          "structure": [
+            "Start with the simplest version that works.",
+            "Ship it. Get feedback.",
+            "Add capabilities incrementally based on actual usage.",
+            "Each enhancement is a separate card through the pipeline."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "name": "Writing Frameworks",
+      "frameworks": [
+        {
+          "id": "pyramid-principle",
+          "name": "Pyramid Principle",
+          "full_name": "Pyramid Principle (Minto)",
+          "when_to_use": "Any written communication — reports, proposals, summaries, documentation, emails.",
+          "structure": [
+            "Lead with the answer / conclusion / recommendation.",
+            "Support with key arguments (3-5 maximum).",
+            "Back each argument with evidence and data.",
+            "Every level answers 'why?' or 'how?' for the level above."
+          ]
+        },
+        {
+          "id": "scqa",
+          "name": "SCQA",
+          "full_name": "Situation, Complication, Question, Answer",
+          "when_to_use": "Framing a problem for stakeholders. Executive communications. Proposals. Any context where you need buy-in.",
+          "structure": [
+            "Situation: What is the current state? (Establish shared context)",
+            "Complication: What has changed or gone wrong? (Create tension)",
+            "Question: What do we need to decide or solve? (Focus attention)",
+            "Answer: What do we recommend? (Resolve the tension)"
+          ]
+        },
+        {
+          "id": "documentation-as-code",
+          "name": "Documentation-as-Code",
+          "when_to_use": "All system documentation, technical docs, process documentation.",
+          "structure": [
+            "Documentation lives alongside the code it describes, in the same repository.",
+            "Documentation is version-controlled and reviewed through the same PR process.",
+            "Documentation is written in markdown — human-readable, diffable, searchable.",
+            "When code changes, documentation changes in the same commit.",
+            "Stale documentation is treated as a bug."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "name": "Design Frameworks",
+      "frameworks": [
+        {
+          "id": "design-thinking",
+          "name": "Design Thinking",
+          "full_name": "Design Thinking (Stanford d.school)",
+          "when_to_use": "Solving problems where the user's needs are central. New features, new tools, UX improvements.",
+          "structure": [
+            "Empathize: Understand the user. What are their actual needs, frustrations, goals?",
+            "Define: Articulate the problem clearly. What specific problem are we solving?",
+            "Ideate: Generate multiple possible solutions. Don't converge too early.",
+            "Prototype: Build a quick, testable version.",
+            "Test: Get feedback. Iterate. Repeat."
+          ]
+        },
+        {
+          "id": "visual-first",
+          "name": "Visual-First Design",
+          "when_to_use": "Any planning, architecture, or design work. Always.",
+          "structure": [
+            "Before writing prose, draw it. Use diagrams, flowcharts, wireframes.",
+            "Architecture decisions are expressed as diagrams before they're expressed as code.",
+            "Plans include visual maps of dependencies, timelines, and relationships.",
+            "Complex systems are understood spatially before they're built linearly."
+          ]
+        },
+        {
+          "id": "atomic-design",
+          "name": "Atomic Design",
+          "when_to_use": "Building UI components, design systems, or any modular interface.",
+          "structure": [
+            "Atoms: Basic building blocks (buttons, inputs, labels)",
+            "Molecules: Simple groups of atoms (search bar = input + button)",
+            "Organisms: Complex components made of molecules (navigation header)",
+            "Templates: Page-level structures with placeholder content",
+            "Pages: Specific instances with real content"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "name": "Thinking & Strategy Frameworks",
+      "frameworks": [
+        {
+          "id": "first-principles",
+          "name": "First Principles Thinking",
+          "when_to_use": "When stuck, when facing a novel problem, when conventional approaches aren't working.",
+          "structure": [
+            "Identify the fundamental truths about the problem — what do we know to be true?",
+            "Strip away assumptions, conventions, and 'how it's always been done.'",
+            "Rebuild the solution from the ground up based on those fundamentals.",
+            "Test the new approach against your guiding objective."
+          ]
+        },
+        {
+          "id": "swot",
+          "name": "SWOT Analysis",
+          "full_name": "Strengths, Weaknesses, Opportunities, Threats",
+          "when_to_use": "Situational assessment. Understanding where we stand before making a strategic decision.",
+          "structure": [
+            "Strengths: What do we do well? What advantages do we have?",
+            "Weaknesses: Where are we limited? What do we lack?",
+            "Opportunities: What external conditions could we leverage?",
+            "Threats: What external factors could hurt us?",
+            "Cross-reference: How can strengths address threats? How can opportunities overcome weaknesses?"
+          ]
+        },
+        {
+          "id": "inversion",
+          "name": "Inversion",
+          "full_name": "Inversion (Charlie Munger)",
+          "when_to_use": "Decision-making. Strategy. Anywhere you need to stress-test a plan.",
+          "structure": [
+            "Instead of asking 'how do I succeed?', ask 'how would I guarantee failure?'",
+            "List everything that would make this fail.",
+            "Invert: make sure you're not doing any of those things.",
+            "The path to success is often clearer when you've mapped the path to failure."
+          ]
+        },
+        {
+          "id": "second-order-thinking",
+          "name": "Second-Order Thinking",
+          "when_to_use": "Evaluating decisions with long-term consequences. Architecture choices. Governance changes.",
+          "structure": [
+            "First-order: What happens immediately if we do this?",
+            "Second-order: What happens because of the first-order effects?",
+            "Third-order: And then what? What are the downstream consequences?",
+            "Evaluate the decision based on the full chain, not just the immediate result."
+          ]
+        },
+        {
+          "id": "jtbd",
+          "name": "Jobs to Be Done",
+          "full_name": "Jobs to Be Done (JTBD)",
+          "when_to_use": "Understanding what users actually need. Feature prioritization. Product decisions.",
+          "structure": [
+            "People don't buy products — they 'hire' them to do a job.",
+            "What job is the user trying to get done?",
+            "What are they currently 'hiring' to do that job?",
+            "What would make our solution better at that job?",
+            "Define success in terms of the job done, not features shipped."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "philosophy",
+      "name": "Philosophical Frameworks",
+      "frameworks": [
+        {
+          "id": "stoic-control",
+          "name": "Stoic Control Dichotomy",
+          "when_to_use": "Resource allocation. Prioritization. When the team or system is overwhelmed.",
+          "structure": [
+            "Divide everything into what you can control and what you cannot.",
+            "Focus all energy on what you can control.",
+            "Accept what you cannot control — don't waste resources fighting it.",
+            "Design systems to be resilient to things outside your control."
+          ]
+        },
+        {
+          "id": "occams-razor",
+          "name": "Occam's Razor",
+          "when_to_use": "Architecture decisions. Choosing between competing approaches. Debugging.",
+          "structure": [
+            "The simplest explanation is usually correct.",
+            "The simplest solution that meets the requirements is usually best.",
+            "Complexity must be justified — every added layer must earn its place.",
+            "When in doubt, simplify."
+          ]
+        },
+        {
+          "id": "via-negativa",
+          "name": "Via Negativa",
+          "full_name": "Via Negativa (Nassim Taleb)",
+          "when_to_use": "System improvement. Reducing fragility. Process optimization.",
+          "structure": [
+            "Improvement often comes from removing what's bad, not adding what's good.",
+            "Before adding a new feature, ask: what should we remove?",
+            "Subtract unnecessary complexity, redundant processes, outdated patterns.",
+            "A system improves by getting lighter, not heavier."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "name": "Team Building Frameworks",
+      "frameworks": [
+        {
+          "id": "raci",
+          "name": "RACI Matrix",
+          "full_name": "Responsible, Accountable, Consulted, Informed",
+          "when_to_use": "Any project with multiple contributors. Clarifying who does what.",
+          "structure": [
+            "Responsible: Who does the work?",
+            "Accountable: Who owns the outcome? (One person/role only)",
+            "Consulted: Who provides input before the work is done?",
+            "Informed: Who needs to know after the work is done?",
+            "Every deliverable has exactly one Accountable."
+          ]
+        },
+        {
+          "id": "capability-mapping",
+          "name": "Capability Mapping",
+          "when_to_use": "Team formation. Identifying gaps. Deciding which agents/roles to assign.",
+          "structure": [
+            "List the capabilities required for the project.",
+            "Map available agents/roles against those capabilities.",
+            "Identify gaps — capabilities needed but not covered.",
+            "Fill gaps by either upskilling existing roles or creating new ones.",
+            "Form the team based on capability coverage, not availability."
+          ]
+        },
+        {
+          "id": "tuckman",
+          "name": "Tuckman's Stages",
+          "full_name": "Tuckman's Stages (Adapted for AI Teams)",
+          "when_to_use": "Understanding team dynamics. Especially relevant when combining human and AI collaborators.",
+          "structure": [
+            "Forming: Team assembled. Roles defined. Context shared. Goals aligned.",
+            "Storming: Approaches debated. Disagreements surfaced. Healthy friction.",
+            "Norming: Standards established. Communication patterns stabilized.",
+            "Performing: High-output execution. Minimal coordination overhead. Flow state.",
+            "Adjourning: Project complete. Retrospective. Learnings captured."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collaborative",
+      "name": "Collaborative Frameworks",
+      "frameworks": [
+        {
+          "id": "rfc",
+          "name": "RFC",
+          "full_name": "Request for Comments",
+          "when_to_use": "Proposing significant changes. Architecture decisions. Anything that affects multiple stakeholders.",
+          "structure": [
+            "Write a proposal document: problem, proposed solution, alternatives considered, trade-offs.",
+            "Share for feedback from all affected parties.",
+            "Set a review deadline.",
+            "Incorporate feedback, document decisions, and proceed or revise."
+          ]
+        },
+        {
+          "id": "retrospective",
+          "name": "Retrospective",
+          "full_name": "Retrospective (Agile)",
+          "when_to_use": "After every significant project or sprint. Regularly (weekly/biweekly).",
+          "structure": [
+            "What went well? — Identify and reinforce positive patterns.",
+            "What didn't go well? — Identify failures and friction points. No blame.",
+            "What should we change? — Specific, actionable improvements.",
+            "Each improvement becomes a card in the backlog."
+          ]
+        },
+        {
+          "id": "decision-log",
+          "name": "Decision Log",
+          "when_to_use": "Continuously. Every project should maintain one.",
+          "structure": [
+            "For every significant decision, record: the decision, date, who made it, alternatives considered, rationale.",
+            "The decision log lives on the task card or a linked document.",
+            "Decisions can be revisited but not silently reversed — a reversal is a new decision with its own entry."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "problem-solving",
+      "name": "Problem-Solving Frameworks",
+      "frameworks": [
+        {
+          "id": "five-whys",
+          "name": "Five Whys",
+          "when_to_use": "Root cause analysis. Debugging. Understanding why something failed or isn't working.",
+          "structure": [
+            "State the problem.",
+            "Ask 'Why?' — and answer it.",
+            "Ask 'Why?' again about that answer.",
+            "Repeat five times (or until you reach the root cause).",
+            "Address the root cause, not the symptom."
+          ]
+        },
+        {
+          "id": "issue-trees",
+          "name": "Issue Trees (MECE)",
+          "full_name": "Issue Trees — Mutually Exclusive, Collectively Exhaustive",
+          "when_to_use": "Breaking down complex problems. Ensuring completeness of analysis.",
+          "structure": [
+            "State the problem as a question.",
+            "Decompose into sub-questions that are Mutually Exclusive (no overlap) and Collectively Exhaustive (nothing missing).",
+            "Continue decomposing until each branch is answerable.",
+            "Solve from the leaves up.",
+            "Visualize as a tree diagram."
+          ]
+        },
+        {
+          "id": "constraint-analysis",
+          "name": "Constraint Analysis",
+          "full_name": "Constraint Analysis (Theory of Constraints)",
+          "when_to_use": "Improving system throughput. Identifying bottlenecks. Process optimization.",
+          "structure": [
+            "Identify the constraint — what is the single biggest bottleneck?",
+            "Exploit the constraint — maximize its efficiency without additional resources.",
+            "Subordinate everything else — align all other processes to support the constraint.",
+            "Elevate the constraint — if exploitation isn't enough, invest to increase capacity.",
+            "Repeat — once this constraint is resolved, find the next one."
+          ]
+        },
+        {
+          "id": "cynefin",
+          "name": "Cynefin Framework",
+          "full_name": "Cynefin Framework (Dave Snowden)",
+          "when_to_use": "Categorizing problems before choosing an approach. Avoiding applying the wrong type of solution.",
+          "structure": [
+            "Clear (Simple): Cause and effect obvious. Apply best practice. Use a workflow.",
+            "Complicated: Cause and effect discoverable with analysis. Apply good practice with expert input.",
+            "Complex: Cause and effect only visible in retrospect. Probe, sense, respond. Experiment.",
+            "Chaotic: No clear cause and effect. Act immediately, then sense and respond.",
+            "Confused: Don't know which domain you're in. Break the problem down until you can categorize each part."
+          ]
+        }
+      ]
+    }
+  ]
+}
