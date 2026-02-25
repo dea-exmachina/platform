@@ -1,0 +1,21 @@
+[Unit]
+Description=nexus webhook handler — GitHub/Vercel events → dea-exmachina-admin Supabase
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dea
+WorkingDirectory=/home/dea/platform
+ExecStart=/usr/bin/python3 /home/dea/platform/webhook-handler.py
+Restart=always
+RestartSec=10
+EnvironmentFile=/home/dea/platform/.env
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=nexus-webhook-handler
+
+[Install]
+WantedBy=multi-user.target
